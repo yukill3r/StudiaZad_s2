@@ -7,12 +7,12 @@
 class SortFloat {
 public:
 	float* array = NULL;
-	unsigned int array_size = 0;
+	int array_size = 0;
 
-	void ArrayGen(unsigned int length) {
+	void ArrayGen(int length) {
 		float* array{ new float[length] {} };
 
-		for (unsigned int x = 0; x < length; x++) {
+		for (int x = 0; x < length; x++) {
 			array[x] = 0;
 		}
 
@@ -39,10 +39,10 @@ public:
 	int* array = NULL;
 	int array_size = 0;
 
-	void ArrayGen(unsigned int length) {
+	void ArrayGen(int length) {
 		int* array{ new int[length] {} };
 
-		for (unsigned int x = 0; x < length; x++) {
+		for (int x = 0; x < length; x++) {
 			array[x] = 0;
 		}
 
@@ -114,7 +114,7 @@ public:
 };
 
 
-void sort_int_setup(SortInt& sort_int, unsigned int length = NULL) {
+void sort_int_setup(SortInt& sort_int, int length = NULL) {
 	if (length == NULL) {
 		system("CLS");
 		printf("Podaj maksymalna wielkosc\n");
@@ -127,7 +127,7 @@ void sort_int_setup(SortInt& sort_int, unsigned int length = NULL) {
 	system("CLS");
 }
 
-void sort_float_setup(SortFloat& sort_float, unsigned int length = NULL) {
+void sort_float_setup(SortFloat& sort_float, int length = NULL) {
 	if (length == NULL) {
 		system("CLS");
 		printf("Podaj maksymalna wielkosc\n");
@@ -146,7 +146,7 @@ int main()
 	SortFloat sort_float{};
 
 	int var = 0;
-	unsigned int length = 0;
+	int length = 0;
 	bool exit = true;
 
 	while (exit)
