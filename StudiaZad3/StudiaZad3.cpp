@@ -110,7 +110,8 @@ int main() {
         printf("\t1. Pola okregu bazowane na pliku promienie.txt\n");
         printf("\t2. Pola trapezu bazowane na pliku dane.txt\n");
         printf("\t3. Wypisane bazowane na ostatniej liczbie z pliku dane.txt\n");
-
+        printf("\t4. Wypisanie sumy czesci liczby bazowane na pliku dane.txt\n");
+        printf("\t5. Wypisanie odwrotnie liczb z pliku dane.txt\n");
         printf("\t99. Exit\n");
 
         std::cin >> var;
@@ -181,6 +182,53 @@ int main() {
                 fileManipulation.closeFile();
                 break;
             }
+            case 4: {
+                /*Pierwsza liczba pokazujaca ile bedzie loopow kolejne liczby do sprawdzenia kazda w osobnej linii*/
+                file = "dane.txt";
+                fileManipulation.openFile(file);
+                fileManipulation.readFile();
+                fileManipulation.popFirstArgument();
+                auto local_copy_of_list = fileManipulation.returnList();
+
+                std::list <int> parts;
+                int number_converted = 0;
+
+                for (auto i : local_copy_of_list) {
+                    number_converted = std::stoi(i);
+                    while (number_converted > 0) {
+                        parts.push_front(number_converted % 10);
+                        number_converted /= 10;
+                    }
+
+                    number_converted = 0;
+                    for (auto b : parts) {
+                        number_converted += b;
+                    }
+                    area.push_back(number_converted);
+                }
+                fileManipulation.writeFile("wynik.txt", Programs.converToOneString(area));
+                area.clear();
+                fileManipulation.clearList();
+                fileManipulation.closeFile();
+                break;
+            }
+            case 5: {
+                /*Pierwsza liczba pokazujaca ile bedzie loopow kolejne liczby do sprawdzenia kazda w osobnej linii*/
+                file = "dane.txt";
+                fileManipulation.openFile(file);
+                fileManipulation.readFile();
+                fileManipulation.popFirstArgument();
+                auto local_copy_of_list = fileManipulation.returnList();
+                local_copy_of_list.reverse();
+                for (auto i : local_copy_of_list) {
+                    area.push_back(std::stof(i));
+                }
+                fileManipulation.writeFile("wynik.txt", Programs.converToOneString(area));
+                area.clear();
+                fileManipulation.clearList();
+                fileManipulation.closeFile();
+                break;
+            }
             case 99: {
 			    exit = false;
 			    break;
@@ -189,65 +237,3 @@ int main() {
     }
     return 0;
 }
-
-/*
-for (int number = 0; number < sort_int.array_size; number++) {
-    std::list<int> lista{};
-    int temp_number = sort_int.array[number];
-    int digit = 0;
-    while (temp_number > 0) {
-        lista.push_front(temp_number % 10);
-        temp_number /= 10;
-    }
-    temp_number = 0;
-    for (auto number : lista) {
-        temp_number += number;
-    }
-    if (temp_number == 1) {
-        std::cout << sort_int.array[number] << ", ";
-    }
-*/
-
-
-/*
-    Ćwiczenie 4. W pliku dane.txt znajduje się ciąg liczb zgodny ze specyfikacją 
-wejścia. Napisz program, który wyznaczy sumę cyfr każdej z liczb i zapisze 
-do pliku wynik.txt.
-Wejście
-W pierwszej linii jedna liczba naturalna dodatnia t określająca ilość zestawów danych.
-Dla każdego zestawu jedna liczba należąca do przedziału [0..1015].
-Wyjście
-Dla każdego zestawu jedna liczba będąca sumą cyfr danej liczby.
-Przykład
-Wejście:
-3
-5
-17
-345
-
-Wyjście:
-5
-8
-12
-
-    Ćwiczenie 5. Napisz program, który wczyta dane z tego pliku, w którym znajdują się liczby całkowite i zapisze je do pliku wynik.txt odwrotnej kolejności.
-Wejście
-W pierwszym wierszu pliku znajduje się jedna liczba naturalna dodatnia n < 10000 określająca ilość liczb do wczytania.
-W następnych n wierszach liczby naturalne.
-Wyjście
-Ciąg liczb wczytanych z pliku, zapisany w odwrotnej kolejności do pliku wynik.txt.
-Przykład
-Wejście:
-5
-1
-2
-3
-4
-54
-Wyjście:
-54
-4
-3
-2
-1
-*/
