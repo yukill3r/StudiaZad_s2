@@ -230,8 +230,8 @@ int main() {
                 break;
             }
             case 99: {
-			    exit = false;
-			    break;
+		exit = false;
+		break;
             }
         }
     }
