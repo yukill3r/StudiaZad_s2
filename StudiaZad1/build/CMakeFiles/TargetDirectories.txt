@@ -1,0 +1,3 @@
+/home/yukiller/vscode/StudiaZad/StudiaZad1/build/CMakeFiles/StudiaZad1.dir
+/home/yukiller/vscode/StudiaZad/StudiaZad1/build/CMakeFiles/edit_cache.dir
+/home/yukiller/vscode/StudiaZad/StudiaZad1/build/CMakeFiles/rebuild_cache.dir

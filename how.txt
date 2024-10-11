@@ -1,0 +1,19 @@
+Create a file CMakeLists.txt (the name is important) together with your source hi.cpp
+{
+project("hi")
+
+add_executable( hi hi.cpp )
+}
+
+
+
+Then compile and run as:
+
+cmake -B <path_to_build_folder> -S <path_to_source_folder>
+cmake --build <path_to_build_folder>
+cd <path_to_build_folder>; ./hi
+
+
+
+
+g++ file_name.cpp -o executable_file_name
